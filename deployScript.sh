@@ -1,1 +1,1 @@
-az group deployment create --resource-group Api-Default-West-US --template-file ./devportal-lrp-demo-conference-api-api.template.json --parameters ./devportal-lrp-parameters.json
+az group deployment create --resource-group Api-Default-West-US --template-file devportal-lrp-master.template.json --parameters ./devportal-lrp-parameters.json
