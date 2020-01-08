@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "value": "Devops-lrp"
+    },
+    "LinkedTemplatesBaseUrl": {
+      "value": "https://devportaldb.blob.core.windows.net/templates"
+    },
+    "LinkedTemplatesUrlQueryString": {
+      "value": "?sv=2019-02-02&ss=bfqt&srt=sco&sp=rwdlacup&se=2020-01-09T02:09:26Z&st=2020-01-08T18:09:26Z&spr=https&sig=2j6OUUYG4BJafYrjZ0bpgRv780AzPhS5ul3OwSLYBGs%3D"
+    },
+    "PolicyXMLBaseUrl": {
+      "value": "https://devportaldb.blob.core.windows.net/templates"
+    }
+  },
+  "resources": []
+}
