@@ -6,10 +6,10 @@
       "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://github.com/RupengLiu/TemplatesTesting"
+      "value": "https://github.com/RupengLiu/TemplatesTesting/master"
     },
     "LinkedTemplatesUrlQueryString": {
-      "value": "?sv=2019-02-02&ss=bfqt&srt=sco&sp=rwdlacup&se=2020-01-09T02:23:16Z&st=2020-01-08T18:23:16Z&spr=https&sig=81Ky9p4g5dYasjX671%2B3Jyc3OeR%2FiDqQ2aeM0G8R0J0%3D"
+      "value": ""
     },
     "PolicyXMLBaseUrl": {
       "value": "https://github.com/RupengLiu/TemplatesTesting/tree/master/policies"
