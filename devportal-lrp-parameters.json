@@ -8,9 +8,6 @@
     "LinkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master"
     },
-    "LinkedTemplatesUrlQueryString": {
-      "value": ""
-    },
     "PolicyXMLBaseUrl": {
       "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/policies"
     }

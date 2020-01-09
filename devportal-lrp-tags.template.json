@@ -12,17 +12,25 @@
   "resources": [
     {
       "properties": {
-        "displayName": "hehehehe"
+        "displayName": "pet"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/hehehehe')]",
+      "name": "[concat(parameters('ApimServiceName'), '/pet')]",
       "type": "Microsoft.ApiManagement/service/tags",
       "apiVersion": "2019-01-01"
     },
     {
       "properties": {
-        "displayName": "hhhh"
+        "displayName": "store"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/hhhh')]",
+      "name": "[concat(parameters('ApimServiceName'), '/store')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "displayName": "user"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/user')]",
       "type": "Microsoft.ApiManagement/service/tags",
       "apiVersion": "2019-01-01"
     }

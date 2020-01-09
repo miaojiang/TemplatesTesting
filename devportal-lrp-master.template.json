@@ -14,12 +14,6 @@
         "description": "Base URL of the repository that contains the generated templates"
       }
     },
-    "LinkedTemplatesUrlQueryString": {
-      "type": "string",
-      "metadata": {
-        "description": "Query string for the URL of the repository"
-      }
-    },
     "PolicyXMLBaseUrl": {
       "type": "string",
       "metadata": {
@@ -32,7 +26,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-namedValues.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-namedValues.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -53,7 +47,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-globalServicePolicy.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-globalServicePolicy.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -76,30 +70,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-products.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          }
-        }
-      },
-      "name": "productsTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-01-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
-      ]
-    },
-    {
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-tags.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-tags.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -122,7 +93,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-backends.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-backends.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -145,7 +116,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-demo-conference-api-api.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-swagger-petstore-api.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -163,7 +134,6 @@
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]"
       ]
