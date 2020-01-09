@@ -40,7 +40,7 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/platinum-productPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/platinum-productPolicy.cshtml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/platinum/policy')]",
@@ -94,7 +94,7 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/starter-productPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/starter-productPolicy.cshtml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/starter/policy')]",

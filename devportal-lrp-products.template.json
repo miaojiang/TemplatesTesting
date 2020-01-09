@@ -54,7 +54,7 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/starter-productPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/starter-productPolicy.cshtml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/starter/policy')]",
