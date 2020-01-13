@@ -1,0 +1,653 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "A sample API with information related to a technical conference.  The available resources  include *Speakers*, *Sessions* and *Topics*.  A single write operation is available to provide  feedback on a session.",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": true,
+        "displayName": "Demo Conference API",
+        "serviceUrl": "https://conferenceapi.azurewebsites.net",
+        "path": "conference",
+        "protocols": [
+          "http",
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "contentType": "application/vnd.ms-azure-apim.swagger.definitions+json",
+        "document": {
+          "value": "{\"Body\":{\"type\":\"string\"},\"Speakers Object\":{\"type\":\"object\",\"properties\":{\"myobject\":{\"type\":\"object\",\"properties\":{\"version\":{\"type\":\"string\"},\"href\":{\"type\":\"string\"},\"links\":{\"type\":\"array\"},\"items\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"href\":{\"type\":\"string\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"required\":[\"name\",\"value\"]}},\"links\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"rel\":{\"type\":\"string\"},\"href\":{\"type\":\"string\"}},\"required\":[\"rel\",\"href\"]}}},\"required\":[\"href\",\"data\",\"links\"]}},\"queries\":{\"type\":\"array\"},\"template\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\"}}}}}}}}"
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/5db8accae98adc12b423605e')]",
+      "type": "Microsoft.ApiManagement/service/apis/schemas",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "Retreive a representation of a single session by Id",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/hal+json"
+              },
+              {
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSession",
+        "method": "GET",
+        "urlTemplate": "/session/{id}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSession')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "A list of sessions.  Optional parameters work as filters to reduce the listed sessions.",
+        "request": {
+          "queryParameters": [
+            {
+              "name": "speakername",
+              "type": "string",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "dayno",
+              "description": "Format - int32.",
+              "type": "integer",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "keyword",
+              "type": "string",
+              "required": false,
+              "values": []
+            }
+          ],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSessions",
+        "method": "GET",
+        "urlTemplate": "/sessions"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSessions')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "hehehehe"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSessions/hehehehe')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'demo-conference-api', 'GetSessions')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "A list of topics covered by a particular session",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSessionTopics",
+        "method": "GET",
+        "urlTemplate": "/session/{id}/topics"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSessionTopics')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.hal+json"
+              },
+              {
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSpeaker",
+        "method": "GET",
+        "urlTemplate": "/speaker/{id}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeaker')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/GetSpeaker-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeaker/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'demo-conference-api', 'GetSpeaker')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "request": {
+          "queryParameters": [
+            {
+              "name": "dayno",
+              "description": "Format - int32.",
+              "type": "integer",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "speakername",
+              "type": "string",
+              "required": false,
+              "values": []
+            }
+          ],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              },
+              {
+                "contentType": "application/json",
+                "sample": "{\r\n    \"collection\": {\r\n        \"version\": \"1.0\",\r\n        \"href\": \"https://conferenceapi.azurewebsites.net:443/speakers\",\r\n        \"links\": [],\r\n        \"items\": [{\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/1\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Scott Guthrie\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/1/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/2\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Don Syme\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/2/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/3\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"James Lewis\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/3/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/4\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jessie Shternshus\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/4/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/5\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Peter Bacon Darwin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/5/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/6\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jon Skeet\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/6/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/7\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Dominick Baier\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/7/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/8\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Craig Dunn\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/8/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/9\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jez Humble\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/9/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/10\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Axel Rauschmayer\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/10/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/11\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Phillip Trelford\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/11/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/12\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mike Cohn\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/12/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/13\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Robert C. Martin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/13/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/14\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jafar Husain\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/14/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/15\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jessica Kerr\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/15/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/16\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Scott Allen\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/16/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/17\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Sahil Malik\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/17/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/18\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"David Fowler\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/18/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/19\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Dan North\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/19/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/20\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Ashe Dryden\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/20/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/21\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jon Galloway\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/21/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/22\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"John Azariah\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/22/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/23\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Damian Edwards\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/23/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/24\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Michele Bustamante\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/24/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/25\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Venkat Subramaniam\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/25/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/26\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Marit Rossnes\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/26/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/27\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mads Torgersen\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/27/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/28\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Nicole Herskowitz\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/28/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/29\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Gill Cleeren\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/29/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/30\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Gary Bernhardt\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/30/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/31\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mathew McLoughlin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/31/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/32\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"David Carmona\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/32/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/33\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Juval Lowy\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/33/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/34\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Louis Dejardin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/34/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/35\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Stuart Lodge\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/35/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/36\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Colin Beales\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/36/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/37\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Pedro F&#233;lix\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/37/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/38\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Tiberiu Covaci\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/38/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/39\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Gary Short\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/39/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/40\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Damian Hickey\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/40/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/41\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Burke Holland\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/41/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/42\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mark Rendle\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/42/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/43\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Miguel Castro\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/43/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/44\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Tomas Petricek\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/44/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/45\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Geoff Watts\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/45/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/46\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Brian A. Randell\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/46/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/47\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Erlend Oftedal\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/47/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/48\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"James Hughes\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/48/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/49\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Tomas Jansson\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/49/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/50\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"G&#225;sp&#225;r Nagy\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/50/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/51\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Andy Clymer\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/51/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/52\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Carl Franklin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/52/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/53\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Richard Campbell\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/53/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/54\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Paul Stack\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/54/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/55\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Marcin Floryan\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/55/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/56\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Enrico Campidoglio\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/56/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/57\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Justin Rusbatch\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/57/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/58\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Matt Ellis\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/58/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/59\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Christian Weyer\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/59/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/60\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"JP Toto\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/60/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/61\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mahesh Krishnan\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/61/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/62\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Ashic Mahtab\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/62/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/63\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Scott Wlaschin\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/63/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/64\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Laurent Bugnion\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/64/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/65\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Tim G. Thomas\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/65/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/66\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Richard Astbury\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/66/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/67\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Hubert Matthews\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/67/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/68\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Dror Helper\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/68/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/69\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Simon Brown\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/69/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/70\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Russ Miles\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/70/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/71\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Christian Hassa\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/71/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/72\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Christian Wenz\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/72/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/73\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mike Taulty\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/73/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/74\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Andy Wigley\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/74/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/75\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Martin Beeby\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/75/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/76\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Mark Seemann\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/76/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/77\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Ben Hall\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/77/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/78\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Bj&#248;rn Einar Bjartnes\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/78/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/79\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Brandon Satrom\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/79/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/80\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jeremy D. Miller\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/80/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/81\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Simon Elliston Ball\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/81/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/82\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Einar H&#248;st\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/82/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/83\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jonas Winje\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/83/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/84\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Steve Sanderson\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/84/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/85\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Richard Garside\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/85/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/86\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Bryan Hunter\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/86/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/87\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Paul Betts\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/87/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/88\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Glenn Block\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/88/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/89\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Brock Allen\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/89/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/90\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Rob Ashton\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/90/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/91\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Liam Westley\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/91/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/92\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Gael Fraiteur\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/92/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/93\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Matthew Podwysocki\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/93/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/94\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Daniel Roth\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/94/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/95\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Darrel Miller\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/95/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/96\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Gojko Adzic\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/96/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/97\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Ingo Rammer\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/97/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/98\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Jon McCoy\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/98/sessions\"\r\n                }]\r\n            },\r\n            {\r\n                \"href\": \"https://conferenceapi.azurewebsites.net/speaker/99\",\r\n                \"data\": [{\r\n                    \"name\": \"Name\",\r\n                    \"value\": \"Karl Krukow\"\r\n                }],\r\n                \"links\": [{\r\n                    \"rel\": \"http://tavis.net/rels/sessions\",\r\n                    \"href\": \"https://conferenceapi.azurewebsites.net/speaker/99/sessions\"\r\n                }]\r\n            }\r\n        ],\r\n        \"queries\": [],\r\n        \"template\": {\r\n            \"data\": []\r\n        }\r\n    }\r\n}",
+                "schemaId": "5db8accae98adc12b423605e",
+                "typeName": "Speakers Object"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSpeakers",
+        "method": "GET",
+        "urlTemplate": "/speakers"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeakers')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'demo-conference-api', '5db8accae98adc12b423605e')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSpeakerSessions",
+        "method": "GET",
+        "urlTemplate": "/speaker/{id}/sessions"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeakerSessions')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetSpeakerTopics",
+        "method": "GET",
+        "urlTemplate": "/speaker/{id}/topics"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeakerTopics')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "hhhh"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeakerTopics/hhhh')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'demo-conference-api', 'GetSpeakerTopics')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/hal+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetTopic",
+        "method": "GET",
+        "urlTemplate": "/topic/{id}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetTopic')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "request": {
+          "queryParameters": [
+            {
+              "name": "dayno",
+              "description": "Format - int32.",
+              "type": "integer",
+              "required": false,
+              "values": []
+            }
+          ],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetTopics",
+        "method": "GET",
+        "urlTemplate": "/topics"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetTopics')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetTopicSessions",
+        "method": "GET",
+        "urlTemplate": "/topic/{id}/sessions"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetTopicSessions')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/vnd.collection+json"
+              }
+            ]
+          }
+        ],
+        "displayName": "GetTopicSpeakers",
+        "method": "GET",
+        "urlTemplate": "/topic/{id}/speakers"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetTopicSpeakers')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "Retreive a representation of a single session by Id",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": [
+            {
+              "contentType": "text/plain",
+              "schemaId": "5db8accae98adc12b423605e",
+              "typeName": "Body"
+            }
+          ]
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "OK",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/hal+json"
+              },
+              {
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        ],
+        "displayName": "SubmitSession",
+        "method": "POST",
+        "urlTemplate": "/session/{id}/feedback"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/SubmitSession')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'demo-conference-api', '5db8accae98adc12b423605e')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/demo-conference-api-apiPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "hehehehe"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/hehehehe')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "hhhh"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/hhhh')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {},
+      "name": "[concat(parameters('ApimServiceName'), '/starter/demo-conference-api')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {},
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/demo-conference-api')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    }
+  ]
+}
