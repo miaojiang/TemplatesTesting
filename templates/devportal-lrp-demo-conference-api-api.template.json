@@ -23,7 +23,7 @@
         "apiRevision": "1",
         "isCurrent": true,
         "subscriptionRequired": true,
-        "displayName": "Demo Conference API",
+        "displayName": "Demo Conference APIs",
         "serviceUrl": "https://conferenceapi.azurewebsites.net",
         "path": "conference",
         "protocols": [
