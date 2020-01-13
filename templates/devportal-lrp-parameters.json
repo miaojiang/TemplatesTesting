@@ -3,15 +3,15 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
-      "value": ""
+      "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": ""
-    },
-    "LinkedTemplatesUrlQueryString": {
-      "value": ""
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master"
     },
     "PolicyXMLBaseUrl": {
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/policies"
+    },
+    "LinkedTemplatesUrlQueryString": {
       "value": ""
     }
   },

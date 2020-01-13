@@ -6,10 +6,10 @@
       "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/templates"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/policies"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/policies"
     },
     "LinkedTemplatesUrlQueryString": {
       "value": ""
