@@ -240,7 +240,7 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/GetSpeaker-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/demo-conference-api-GetSpeaker-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/GetSpeaker/policy')]",

@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
-      "value": ""
+      "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
       "value": ""

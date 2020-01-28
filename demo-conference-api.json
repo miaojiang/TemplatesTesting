@@ -1,1 +1,1 @@
-{"sourceApimName":"devportal-lrp","destinationApimName":"","resourceGroup":"Api-Default-West-US","fileFolder":"c:\\Users\\rupliu\\TemplatesTesting\\templates","apiName":"demo-conference-api","linkedTemplatesBaseUrl":"","linkedTemplatesUrlQueryString":"","policyXMLBaseUrl":""}
+{"sourceApimName":"devportal-lrp","destinationApimName":"Devops-lrp","resourceGroup":"Api-Default-West-US","fileFolder":"c:\\Users\\rupliu\\TemplatesTesting\\templates","splitAPIs":"true","linkedTemplatesBaseUrl":"","linkedTemplatesUrlQueryString":"","policyXMLBaseUrl":""}
