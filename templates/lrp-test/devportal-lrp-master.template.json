@@ -32,7 +32,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-namedValues.template.json')', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-namedValues.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -41,9 +41,6 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "PolicyXMLSasToken": {
-            "value": "[parameters('PolicyXMLSasToken')]"
           }
         }
       },
@@ -56,7 +53,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-globalServicePolicy.template.json')', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-globalServicePolicy.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -65,9 +62,6 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "PolicyXMLSasToken": {
-            "value": "[parameters('PolicyXMLSasToken')]"
           }
         }
       },
@@ -82,7 +76,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-backends.template.json')', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-backends.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -91,9 +85,6 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "PolicyXMLSasToken": {
-            "value": "[parameters('PolicyXMLSasToken')]"
           }
         }
       },
@@ -108,7 +99,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-lrp-test-api.template.json')', parameters('LinkedTemplatesUrlQueryString'))]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-lrp-test-api.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -117,9 +108,6 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "PolicyXMLSasToken": {
-            "value": "[parameters('PolicyXMLSasToken')]"
           }
         }
       },
