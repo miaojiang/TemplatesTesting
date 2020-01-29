@@ -1,0 +1,124 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "alzaslonfuncapp",
+        "resourceId": "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/alzaslonfuncapp/providers/Microsoft.Web/sites/alzaslonfuncapp",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{alzaslonfuncapp-key}}"
+            ]
+          }
+        },
+        "url": "https://alzaslonfuncapp.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/alzaslonfuncapp')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "description": "lrp-test",
+        "resourceId": "https://management.azure.com//subscription/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default-West-US/providers/Microsoft.Web/sites/lrp-test",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{lrp-test-key}}"
+            ]
+          }
+        },
+        "url": "https://lrp-test.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/lrp-test')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "title": "myBackend",
+        "description": "description5308",
+        "credentials": {
+          "query": {
+            "sv": [
+              "xx",
+              "bb"
+            ]
+          },
+          "header": {
+            "x-my-1": [
+              "val1",
+              "val2"
+            ]
+          },
+          "authorization": {
+            "scheme": "Basic",
+            "parameter": "opensesma"
+          }
+        },
+        "proxy": {
+          "url": "http://192.168.1.1:8080",
+          "username": "Contoso\\admin",
+          "password": "opensesame"
+        },
+        "tls": {
+          "validateCertificateChain": false,
+          "validateCertificateName": false
+        },
+        "url": "https://backendname2644/",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/myBackend')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "description": "vifedoFunctionAppTest",
+        "resourceId": "https://management.azure.com/subscriptions/aa7def4e-6bcd-4b28-b8d5-7613a618e753/resourceGroups/vifedorgroup/providers/Microsoft.Web/sites/vifedoFunctionAppTest",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{vifedofunctionapptest-key}}"
+            ]
+          }
+        },
+        "url": "https://vifedofunctionapptest.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/vifedofunctionapptest')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "description": "vifedofunctionapp-v3-1",
+        "resourceId": "https://management.azure.com/subscriptions/aa7def4e-6bcd-4b28-b8d5-7613a618e753/resourceGroups/vifedorgroup/providers/Microsoft.Web/sites/vifedofunctionapp-v3-1",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{vifedofunctionapp-v3-1-key}}"
+            ]
+          }
+        },
+        "url": "https://vifedofunctionapp-v3-1.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/vifedofunctionapp-v3-1')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    }
+  ]
+}

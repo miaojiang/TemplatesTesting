@@ -6,12 +6,12 @@
       "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test"
-    },
-    "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test/policies"
+      "value": ""
     },
     "LinkedTemplatesUrlQueryString": {
+      "value": ""
+    },
+    "PolicyXMLBaseUrl": {
       "value": ""
     },
     "serviceUrl": {
@@ -22,7 +22,7 @@
         "v3": "http://echoapi.cloudapp.net/api",
         "lrptest": "http://google.com",
         "swaggerpetstore": "https://petstore.swagger.io/v2",
-        "vev34r35ik78jolo": "https://google.com"
+        "vev34r35ik78jolo": null
       }
     }
   },

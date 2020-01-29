@@ -1,1 +1,17 @@
-{"sourceApimName":"devportal-lrp","destinationApimName":"Devops-lrp","resourceGroup":"Api-Default-West-US","fileFolder":"c:\\Users\\rupliu\\TemplatesTesting\\templates","splitAPIs":"true","linkedTemplatesBaseUrl":"","linkedTemplatesUrlQueryString":"","policyXMLBaseUrl":"", "baseFileName":"basebase"}
+{
+  "sourceApimName": "devportal-lrp",
+  "destinationApimName": "Devops-lrp",
+  "resourceGroup": "Api-Default-West-US",
+  "fileFolder": "c:\\Users\\rupliu\\TemplatesTesting\\templates",
+  "splitAPIs": "true",
+  "linkedTemplatesBaseUrl": "",
+  "linkedTemplatesUrlQueryString": "",
+  "policyXMLBaseUrl": "",
+  "serviceUrlParameters": [
+    {
+      "apiName": "lrp-test",
+      "serviceUrl": "http://google.com"
+    }
+  ],
+  "paramServiceUrl":  "true"
+}
