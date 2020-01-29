@@ -6,10 +6,10 @@
       "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/swagger-petstore"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test/policies"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/swagger-petstore/policies"
     },
     "LinkedTemplatesUrlQueryString": {
       "value": ""
