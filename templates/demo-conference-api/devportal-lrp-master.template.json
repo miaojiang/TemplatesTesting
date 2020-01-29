@@ -53,6 +53,9 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
+          },
+          "NamedValues": {
+            "value": "[parameters('NamedValues')]"
           }
         }
       },
