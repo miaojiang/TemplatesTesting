@@ -31,6 +31,12 @@
       "metadata": {
         "description": "Service url for each Api"
       }
+    },
+    "NamedValues": {
+      "type": "object",
+      "metadata": {
+        "description": "Named values"
+      }
     }
   },
   "resources": [

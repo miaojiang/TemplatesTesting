@@ -13,5 +13,6 @@
       "serviceUrl": "http://google.com"
     }
   ],
-  "paramServiceUrl":  "true"
+  "paramServiceUrl":  "true",
+  "paramNamedValue": "true"
 }

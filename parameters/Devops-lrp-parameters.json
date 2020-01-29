@@ -6,10 +6,10 @@
       "value": "Devops-lrp"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/policies"
+      "value": "https://raw.githubusercontent.com/RupengLiu/TemplatesTesting/master/templates/lrp-test/policies"
     },
     "LinkedTemplatesUrlQueryString": {
       "value": ""
@@ -23,6 +23,15 @@
         "lrptest": "http://google.com",
         "swaggerpetstore": "https://petstore.swagger.io/v2",
         "vev34r35ik78jolo": "https://google.com"
+      }
+    },
+    "NamedValues": {
+      "value": {
+        "alzaslonfuncappkey": "qyjuaCj3hcPXkOmw8qx0fmWlDgn/nFYIVwcDQfAyBUiS68xbLpBvBA==",
+        "lrptestkey": "KBIv6LoGgIH30vlBGJAOy35b4/8uHcrLa7X7ytUe3uPG0I0kNs0sog==",
+        "named": "value2",
+        "vifedofunctionapptestkey": "kGR6LLrT9ocd9N11Nkmgx7cteYfL3hxek4Ij5wRkH40P+of1CSuOFA==",
+        "vifedofunctionappv31key": "xS5ilxpvPrleMamXErWHCbVbLz5Q22pU52utUS/scQGWfDoPNoHE5w=="
       }
     }
   },

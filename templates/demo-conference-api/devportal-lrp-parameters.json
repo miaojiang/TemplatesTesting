@@ -18,6 +18,15 @@
       "value": {
         "democonferenceapi": "https://conferenceapi.azurewebsites.net"
       }
+    },
+    "NamedValues": {
+      "value": {
+        "alzaslonfuncappkey": "qyjuaCj3hcPXkOmw8qx0fmWlDgn/nFYIVwcDQfAyBUiS68xbLpBvBA==",
+        "lrptestkey": "KBIv6LoGgIH30vlBGJAOy35b4/8uHcrLa7X7ytUe3uPG0I0kNs0sog==",
+        "named": "value",
+        "vifedofunctionapptestkey": "kGR6LLrT9ocd9N11Nkmgx7cteYfL3hxek4Ij5wRkH40P+of1CSuOFA==",
+        "vifedofunctionappv31key": "xS5ilxpvPrleMamXErWHCbVbLz5Q22pU52utUS/scQGWfDoPNoHE5w=="
+      }
     }
   },
   "resources": []
