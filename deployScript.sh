@@ -1,1 +1,1 @@
-az group deployment create --resource-group alzaslonfuncapp --template-file ./templates/swagger-petstore/devportal-lrp-master.template.json --parameters ./parameters/Devops-lrp-parameters.json
+az group deployment create --resource-group alzaslonfuncapp --template-file ./templates/devportal-lrp-master.template.json --parameters ./parameters/Devops-lrp-parameters.json
