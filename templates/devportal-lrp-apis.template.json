@@ -658,7 +658,7 @@
     {
       "properties": {
         "alwaysLog": "allErrors",
-        "loggerId": "[parameters('ApiLoggerId')].democonferenceapi.",
+        "loggerId": "[parameters('ApiLoggerId').democonferenceapi.applicationinsights]",
         "sampling": {
           "samplingType": "fixed",
           "percentage": 100.0
