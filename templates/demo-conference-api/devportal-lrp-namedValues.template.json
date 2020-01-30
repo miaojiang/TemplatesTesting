@@ -65,6 +65,16 @@
     },
     {
       "properties": {
+        "secret": false,
+        "displayName": "thisIsSecret",
+        "value": "[parameters('NamedValues').thisissecret]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/thisissecret')]",
+      "type": "Microsoft.ApiManagement/service/properties",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
         "tags": [
           "key",
           "function",
