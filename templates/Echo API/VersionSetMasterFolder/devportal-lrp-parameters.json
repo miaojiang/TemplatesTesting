@@ -32,11 +32,7 @@
       }
     },
     "ApiLoggerId": {
-      "value": {
-        "echoapi": {},
-        "V2": {},
-        "v3": {}
-      }
+      "value": {}
     }
   },
   "resources": []

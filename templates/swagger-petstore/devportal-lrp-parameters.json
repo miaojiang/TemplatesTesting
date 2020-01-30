@@ -30,9 +30,7 @@
       }
     },
     "ApiLoggerId": {
-      "value": {
-        "swaggerpetstore": {}
-      }
+      "value": {}
     }
   },
   "resources": []
