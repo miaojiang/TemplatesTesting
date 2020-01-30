@@ -22,9 +22,19 @@
         ],
         "secret": true,
         "displayName": "alzaslonfuncapp-key",
-        "value": "parameters('NamedValues').alzaslonfuncappkey"
+        "value": "[parameters('NamedValues').alzaslonfuncappkey]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/alzaslonfuncapp-key')]",
+      "type": "Microsoft.ApiManagement/service/properties",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "secret": true,
+        "displayName": "Logger-Credentials-5e31fcade98adc12080d3148",
+        "value": "[parameters('NamedValues').Property5e31fcade98adc12080d3147]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/5e31fcade98adc12080d3147')]",
       "type": "Microsoft.ApiManagement/service/properties",
       "apiVersion": "2019-01-01"
     },
@@ -37,7 +47,7 @@
         ],
         "secret": true,
         "displayName": "lrp-test-key",
-        "value": "parameters('NamedValues').lrptestkey"
+        "value": "[parameters('NamedValues').lrptestkey]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/lrp-test-key')]",
       "type": "Microsoft.ApiManagement/service/properties",
@@ -47,7 +57,7 @@
       "properties": {
         "secret": false,
         "displayName": "named",
-        "value": "parameters('NamedValues').named"
+        "value": "[parameters('NamedValues').named]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/named')]",
       "type": "Microsoft.ApiManagement/service/properties",
@@ -62,7 +72,7 @@
         ],
         "secret": true,
         "displayName": "vifedofunctionapptest-key",
-        "value": "parameters('NamedValues').vifedofunctionapptestkey"
+        "value": "[parameters('NamedValues').vifedofunctionapptestkey]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/vifedofunctionapptest-key')]",
       "type": "Microsoft.ApiManagement/service/properties",
@@ -77,7 +87,7 @@
         ],
         "secret": true,
         "displayName": "vifedofunctionapp-v3-1-key",
-        "value": "parameters('NamedValues').vifedofunctionappv31key"
+        "value": "[parameters('NamedValues').vifedofunctionappv31key]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/vifedofunctionapp-v3-1-key')]",
       "type": "Microsoft.ApiManagement/service/properties",
