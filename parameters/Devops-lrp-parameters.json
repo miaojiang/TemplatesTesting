@@ -34,13 +34,6 @@
         "vifedofunctionapptestkey": "kGR6LLrT9ocd9N11Nkmgx7cteYfL3hxek4Ij5wRkH40P+of1CSuOFA==",
         "vifedofunctionappv31key": "xS5ilxpvPrleMamXErWHCbVbLz5Q22pU52utUS/scQGWfDoPNoHE5w=="
       }
-    },
-    "ApiLoggerId": {
-      "value": {
-        "democonferenceapi": {
-          "applicationinsights": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/devportal-lrp/loggers/lrp-test"
-        }
-      }
     }
   },
   "resources": []

@@ -10,9 +10,6 @@
     },
     "serviceUrl": {
       "type": "object"
-    },
-    "ApiLoggerId": {
-      "type": "object"
     }
   },
   "resources": [
@@ -658,7 +655,7 @@
     {
       "properties": {
         "alwaysLog": "allErrors",
-        "loggerId": "[parameters('ApiLoggerId').democonferenceapi.applicationinsights]",
+        "loggerId": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/devportal-lrp/loggers/lrp-test",
         "sampling": {
           "samplingType": "fixed",
           "percentage": 100.0
