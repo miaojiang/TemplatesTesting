@@ -10,6 +10,9 @@
     },
     "serviceUrl": {
       "type": "object"
+    },
+    "ApiLoggerId": {
+      "type": "object"
     }
   },
   "resources": [
@@ -647,6 +650,50 @@
       "properties": {},
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/demo-conference-api')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"
+      ]
+    },
+    {
+      "properties": {
+        "alwaysLog": "allErrors",
+        "loggerId": "[parameters('ApiLoggerId')].democonferenceapi.",
+        "sampling": {
+          "samplingType": "fixed",
+          "percentage": 100.0
+        },
+        "frontend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        },
+        "backend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/demo-conference-api/applicationinsights')]",
+      "type": "Microsoft.ApiManagement/service/apis/diagnostics",
       "apiVersion": "2019-01-01",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'demo-conference-api')]"

@@ -37,6 +37,12 @@
       "metadata": {
         "description": "Named values"
       }
+    },
+    "ApiLoggerId": {
+      "type": "object",
+      "metadata": {
+        "description": "LoggerId for this api"
+      }
     }
   },
   "resources": [
@@ -241,6 +247,9 @@
           },
           "serviceUrl": {
             "value": "[parameters('serviceUrl')]"
+          },
+          "ApiLoggerId": {
+            "value": "[parameters('ApiLoggerId')]"
           }
         }
       },

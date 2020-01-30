@@ -30,6 +30,13 @@
         "vifedofunctionapptestkey": "kGR6LLrT9ocd9N11Nkmgx7cteYfL3hxek4Ij5wRkH40P+of1CSuOFA==",
         "vifedofunctionappv31key": "xS5ilxpvPrleMamXErWHCbVbLz5Q22pU52utUS/scQGWfDoPNoHE5w=="
       }
+    },
+    "ApiLoggerId": {
+      "value": {
+        "echoapi": {},
+        "V2": {},
+        "v3": {}
+      }
     }
   },
   "resources": []

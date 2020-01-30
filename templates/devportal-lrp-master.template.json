@@ -37,6 +37,12 @@
       "metadata": {
         "description": "Named values"
       }
+    },
+    "ApiLoggerId": {
+      "type": "object",
+      "metadata": {
+        "description": "LoggerId for this api"
+      }
     }
   },
   "resources": [
@@ -160,6 +166,29 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-loggers.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "PolicyXMLBaseUrl": {
+            "value": "[parameters('PolicyXMLBaseUrl')]"
+          }
+        }
+      },
+      "name": "loggersTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/devportal-lrp-backends.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
@@ -218,6 +247,9 @@
           },
           "serviceUrl": {
             "value": "[parameters('serviceUrl')]"
+          },
+          "ApiLoggerId": {
+            "value": "[parameters('ApiLoggerId')]"
           }
         }
       },
@@ -230,6 +262,7 @@
         "[resourceId('Microsoft.Resources/deployments', 'versionSetTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'loggersTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'authorizationServersTemplate')]"
       ]

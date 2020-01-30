@@ -14,5 +14,6 @@
     }
   ],
   "paramServiceUrl":  "true",
-  "paramNamedValue": "true"
+  "paramNamedValue": "true",
+  "paramApiLoggerId": "true"
 }
