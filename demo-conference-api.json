@@ -6,14 +6,5 @@
   "splitAPIs": "true",
   "linkedTemplatesBaseUrl": "",
   "linkedTemplatesUrlQueryString": "",
-  "policyXMLBaseUrl": "",
-  "serviceUrlParameters": [
-    {
-      "apiName": "lrp-test",
-      "serviceUrl": "http://google.com"
-    }
-  ],
-  "paramServiceUrl":  "true",
-  "paramNamedValue": "true",
-  "paramApiLoggerId": "true"
+  "policyXMLBaseUrl": ""
 }
