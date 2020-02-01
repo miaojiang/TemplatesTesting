@@ -25,6 +25,12 @@
       "metadata": {
         "description": "Base URL of the repository that contains the generated policy files"
       }
+    },
+    "LoggerResourceId": {
+      "type": "object",
+      "metadata": {
+        "description": "ResourceId for the logger"
+      }
     }
   },
   "resources": [
@@ -154,6 +160,9 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
+          },
+          "LoggerResourceId": {
+            "value": "[parameters('LoggerResourceId')]"
           }
         }
       },

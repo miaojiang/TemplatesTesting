@@ -7,6 +7,9 @@
     },
     "PolicyXMLBaseUrl": {
       "type": "string"
+    },
+    "LoggerResourceId": {
+      "type": "object"
     }
   },
   "resources": [

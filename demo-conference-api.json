@@ -6,5 +6,6 @@
   "splitAPIs": "true",
   "linkedTemplatesBaseUrl": "",
   "linkedTemplatesUrlQueryString": "",
-  "policyXMLBaseUrl": ""
+  "policyXMLBaseUrl": "",
+  "paramLogResourceId": "true"
 }
