@@ -1,1 +1,1 @@
-az group deployment create --resource-group alzaslonfuncapp --template-file ./templates/demo-conference-api/devportal-lrp-master.template.json --parameters ./parameters/Devops-lrp-parameters.json
+az group deployment create --resource-group alzaslonfuncapp --template-file ./templates/lrp-test/devportal-lrp-master.template.json --parameters ./parameters/Devops-lrp-parameters.json
