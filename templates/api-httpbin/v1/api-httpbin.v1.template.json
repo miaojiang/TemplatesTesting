@@ -27,7 +27,8 @@
                 "serviceUrl": "https://httpbin.org",
                 "path": "httpbin",
                 "protocols": [
-                    "https"
+                    "https",
+                    "http"
                 ],
                 "authenticationSettings": null,
                 "subscriptionKeyParameterNames": null,
