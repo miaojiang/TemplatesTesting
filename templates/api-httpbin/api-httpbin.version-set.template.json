@@ -9,8 +9,8 @@
     "resources": [
         {
             "name": "[concat(parameters('ApimServiceName'), '/versionset-httpbin-api')]",
-            "type": "Microsoft.ApiManagement/service/api-version-sets",
-            "apiVersion": "2018-01-01",
+            "type": "Microsoft.ApiManagement/service/apiVersionSets",
+            "apiVersion": "2019-01-01",
             "properties": {
                 "description": "Version set for HTTP bin API",
                 "versionQueryName": "api-version",
