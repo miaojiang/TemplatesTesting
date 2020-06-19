@@ -32,7 +32,7 @@
                 "authenticationSettings": null,
                 "subscriptionKeyParameterNames": null,
                 "apiVersion": "v1",
-                "apiVersionSetId": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('ApimServiceName')), '/api-version-sets/versionset-httpbin-api')]"
+                "apiVersionSetId": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('ApimServiceName')), '/apiVersionSets/versionset-httpbin-api')]"
             }
         },
         {
