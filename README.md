@@ -1,2 +1,1 @@
-Test 
-Test
+This is a demo respository showing how to deploy a set of ARM templates to Azure API Management using GitHub Actions.
