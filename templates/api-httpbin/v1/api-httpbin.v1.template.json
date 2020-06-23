@@ -23,7 +23,7 @@
             "properties": {
                 "displayName": "HTTP Bin API",
                 "apiRevision": "1",
-                "description": "API Management facade for very handy and free online HTTP tool",
+                "description": "API Management facade for a very handy and free online HTTP tool",
                 "serviceUrl": "https://httpbin.org",
                 "path": "httpbin",
                 "protocols": [
